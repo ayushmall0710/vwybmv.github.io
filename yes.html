@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yay! You said Yes!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="yes-styles.css">
+</head>
+<body>
+    <!-- Floating Hearts Animation -->
+    <div class="hearts-container" id="heartsContainer"></div>
+
+    <!-- Confetti -->
+    <div class="confetti-container" id="confettiContainer"></div>
+
+    <div class="celebration-container">
+        <div class="celebration-card">
+            <div class="card-tape"></div>
+            
+            <h1 class="title">I knew you'd say yes!</h1>
+            <p class="subtitle">You've made me the happiest, Vrushti 💖</p>
+            
+            <!-- Placeholder for couple's GIF -->
+            <div class="gif-frame">
+                <div class="frame-tape"></div>
+                <!-- Replace the src with your couple's GIF -->
+                <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmo3c3l5ODh3ZGN6NHhhaDE2Mjg1ZjkwOXczdDFxbWM3dTBtaW9zaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/9XY4f3FgFTT4QlaYqa/giphy.gif" 
+                     alt="Us celebrating!" 
+                     class="celebration-gif"
+                     onerror="this.src='https://via.placeholder.com/300x250/E8B4B8/FFFFFF?text=Our+GIF+Here'">
+            </div>
+            
+            <p class="love-message">
+                Can't wait to spend Valentine's Day with you! 
+                <br>
+                <span class="signature">- With all my love ♥</span>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Create floating hearts
+        function createHeart() {
+            const container = document.getElementById('heartsContainer');
+            const heart = document.createElement('div');
+            heart.className = 'floating-heart';
+            heart.innerHTML = '♥';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+            heart.style.opacity = Math.random() * 0.5 + 0.3;
+            container.appendChild(heart);
+            
+            setTimeout(() => heart.remove(), 7000);
+        }
+
+        // Create confetti
+        function createConfetti() {
+            const container = document.getElementById('confettiContainer');
+            const colors = ['#E8B4B8', '#D4A853', '#B8D4E3', '#FDF6E3', '#FFD700'];
+            
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                    confetti.style.animationDelay = Math.random() * 0.5 + 's';
+                    container.appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), 5000);
+                }, i * 50);
+            }
+        }
+
+        // Start animations
+        setInterval(createHeart, 300);
+        createConfetti();
+        
+        // Burst of confetti every few seconds
+        setInterval(createConfetti, 5000);
+    </script>
+</body>
+</html>

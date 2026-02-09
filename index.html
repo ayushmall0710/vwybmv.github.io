@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will you be my Valentine, Vrushti?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Decorative elements -->
+    <div class="decorations">
+        <div class="heart heart-1">♥</div>
+        <div class="heart heart-2">♥</div>
+        <div class="heart heart-3">♥</div>
+        <div class="heart heart-4">♥</div>
+        <div class="heart heart-5">♥</div>
+        <div class="washi-tape tape-top-left"></div>
+        <div class="washi-tape tape-top-right"></div>
+        <div class="washi-tape tape-bottom-left"></div>
+    </div>
+
+    <div class="scrapbook-container">
+        <!-- Main card -->
+        <div class="main-card">
+            <div class="card-tape"></div>
+            <h1 class="title">Vrushti, will you be my Valentine?</h1>
+            
+            <div class="gif-container">
+                <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW5lenZyZHI5OXM2eW95b3pmMG40cWVrMDhtNjVuM3A4dGNxa2g2dSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/VM1fcpu2bKs1e2Kdbj/giphy.gif" alt="Cute pleading gif" class="main-gif">
+            </div>
+
+            <div class="buttons">
+                <button class="btn yes-btn" onclick="handleYesClick()">Yes!</button>
+                <button class="btn no-btn" id="noBtn" onclick="handleNoClick()">No</button>
+            </div>
+
+            <p class="message" id="message"></p>
+        </div>
+
+        <!-- Polaroid gallery - reveals on No clicks -->
+        <div class="polaroid-gallery" id="polaroidGallery">
+            <!-- Polaroids will be dynamically added by JavaScript -->
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

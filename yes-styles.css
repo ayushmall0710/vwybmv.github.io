@@ -1,0 +1,289 @@
+/* ===== Base Styles ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Quicksand', sans-serif;
+    background: linear-gradient(135deg, #FDF6E3 0%, #F5E6D3 100%);
+    background-image: 
+        linear-gradient(135deg, #FDF6E3 0%, #F5E6D3 100%),
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(139, 109, 76, 0.03) 2px,
+            rgba(139, 109, 76, 0.03) 4px
+        );
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* ===== Hearts Container ===== */
+.hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+    overflow: hidden;
+}
+
+.floating-heart {
+    position: absolute;
+    bottom: -50px;
+    color: #E8B4B8;
+    animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* ===== Confetti ===== */
+.confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+    overflow: hidden;
+}
+
+.confetti {
+    position: absolute;
+    top: -20px;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    animation: confettiFall linear forwards;
+}
+
+@keyframes confettiFall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* ===== Celebration Container ===== */
+.celebration-container {
+    position: relative;
+    z-index: 2;
+    max-width: 500px;
+    width: 100%;
+}
+
+/* ===== Celebration Card ===== */
+.celebration-card {
+    background: linear-gradient(145deg, #B8D4E3 0%, #C5DDE9 100%);
+    border-radius: 12px;
+    padding: 50px 35px;
+    box-shadow: 
+        0 8px 30px rgba(139, 109, 76, 0.2),
+        0 4px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    text-align: center;
+    animation: cardAppear 0.8s ease-out;
+}
+
+@keyframes cardAppear {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.card-tape {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-3deg);
+    width: 120px;
+    height: 30px;
+    background: linear-gradient(135deg, #D4A853 0%, #E8C875 50%, #D4A853 100%);
+    opacity: 0.9;
+}
+
+/* ===== Typography ===== */
+.title {
+    font-family: 'Caveat', cursive;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #4A4A4A;
+    margin-bottom: 10px;
+    animation: titleBounce 1s ease-out 0.3s backwards;
+}
+
+@keyframes titleBounce {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.subtitle {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.3rem;
+    color: #5A5A5A;
+    margin-bottom: 30px;
+    animation: fadeIn 0.8s ease-out 0.5s backwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== GIF Frame (Polaroid style) ===== */
+.gif-frame {
+    background: #FEFEFE;
+    padding: 15px 15px 20px 15px;
+    margin: 20px auto;
+    box-shadow: 
+        0 4px 15px rgba(139, 109, 76, 0.2),
+        0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: inline-block;
+    transform: rotate(-2deg);
+    animation: frameAppear 0.8s ease-out 0.7s backwards;
+}
+
+@keyframes frameAppear {
+    from {
+        opacity: 0;
+        transform: rotate(-2deg) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: rotate(-2deg) scale(1);
+    }
+}
+
+.frame-tape {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%) rotate(5deg);
+    width: 70px;
+    height: 22px;
+    background: linear-gradient(135deg, #D4A853 0%, #E8C875 50%, #D4A853 100%);
+    opacity: 0.85;
+}
+
+.celebration-gif {
+    max-width: 280px;
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 2px;
+}
+
+/* ===== Love Message ===== */
+.love-message {
+    font-family: 'Caveat', cursive;
+    font-size: 1.5rem;
+    color: #4A4A4A;
+    line-height: 1.6;
+    margin-top: 25px;
+    animation: fadeIn 0.8s ease-out 0.9s backwards;
+}
+
+.signature {
+    display: block;
+    margin-top: 15px;
+    font-size: 1.3rem;
+    color: #E8B4B8;
+}
+
+/* ===== Gold Glitter Effect ===== */
+.celebration-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 15% 25%, #D4A853 1.5px, transparent 1.5px),
+        radial-gradient(circle at 85% 15%, #D4A853 1px, transparent 1px),
+        radial-gradient(circle at 45% 85%, #D4A853 1.5px, transparent 1.5px),
+        radial-gradient(circle at 75% 75%, #D4A853 1px, transparent 1px),
+        radial-gradient(circle at 25% 60%, #D4A853 1px, transparent 1px);
+    background-size: 100% 100%;
+    opacity: 0.4;
+    pointer-events: none;
+    animation: sparkle 2s ease-in-out infinite;
+    border-radius: 12px;
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.5; }
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 500px) {
+    .title {
+        font-size: 2.2rem;
+    }
+    
+    .subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .celebration-card {
+        padding: 40px 25px;
+    }
+    
+    .celebration-gif {
+        max-width: 220px;
+    }
+    
+    .love-message {
+        font-size: 1.3rem;
+    }
+    
+    .card-tape {
+        width: 90px;
+        height: 25px;
+    }
+}
