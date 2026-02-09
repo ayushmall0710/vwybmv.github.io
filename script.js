@@ -69,6 +69,7 @@ const pleadingMessages = [
 // ===== State =====
 let clickCount = 0;
 let currentScale = 1;
+let isFirstClick = true;
 
 // ===== DOM Elements =====
 const noBtn = document.getElementById('noBtn');
@@ -78,20 +79,25 @@ const polaroidGalleryRight = document.getElementById('polaroidGalleryRight');
 const polaroidGalleryOverflow = document.getElementById('polaroidGalleryOverflow');
 const bgMusic = document.getElementById('bgMusic');
 
-// ===== Auto-play Background Music =====
-// Try to play music on page load, with user interaction fallback
+// ===== Background Music Setup =====
+// Set volume but don't autoplay - wait for first No click
 document.addEventListener('DOMContentLoaded', () => {
     bgMusic.volume = 0.5; // Set volume to 50%
-    bgMusic.play().catch(() => {
-        // If autoplay is blocked, play on first user interaction
-        document.body.addEventListener('click', () => {
-            bgMusic.play();
-        }, { once: true });
-    });
+    // Music will start after first No button click alert
 });
 
 // ===== Handle No Button Click =====
 function handleNoClick() {
+    // Show alert on first click and start music
+    if (isFirstClick) {
+        isFirstClick = false;
+        alert("Well, well, look at you hitting no, shameless. Please connect earphones if in class before hitting okay");
+        // Start music after alert is dismissed
+        bgMusic.play().catch(err => {
+            console.log("Music playback failed:", err);
+        });
+    }
+    
     // Add shake animation
     noBtn.classList.add('shrinking');
     setTimeout(() => noBtn.classList.remove('shrinking'), 400);
