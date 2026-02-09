@@ -2,32 +2,32 @@
 // Replace the messages with your own personal messages!
 const polaroids = [
     { 
-        image: "photos/1.jpg", 
-        message: "MESSAGE_1 - Replace with your memory" 
+        image: "photos/photo1.jpg", 
+        message: "PLACEHOLDER_MESSAGE_1" 
     },
     { 
-        image: "photos/2.jpg", 
-        message: "MESSAGE_2 - Replace with your memory" 
+        image: "photos/photo2.jpg", 
+        message: "PLACEHOLDER_MESSAGE_2" 
     },
     { 
-        image: "photos/3.jpg", 
-        message: "MESSAGE_3 - Replace with your memory" 
+        image: "photos/photo3.jpg", 
+        message: "PLACEHOLDER_MESSAGE_3" 
     },
     { 
-        image: "photos/4.jpg", 
-        message: "MESSAGE_4 - Replace with your memory" 
+        image: "photos/photo4.jpg", 
+        message: "PLACEHOLDER_MESSAGE_4" 
     },
     { 
-        image: "photos/5.jpg", 
-        message: "MESSAGE_5 - Replace with your memory" 
+        image: "photos/photo5.jpg", 
+        message: "PLACEHOLDER_MESSAGE_5" 
     },
     { 
-        image: "photos/6.jpg", 
-        message: "MESSAGE_6 - Replace with your memory" 
+        image: "photos/photo6.jpg", 
+        message: "PLACEHOLDER_MESSAGE_6" 
     },
     { 
-        image: "photos/7.jpg", 
-        message: "MESSAGE_7 - Replace with your memory" 
+        image: "photos/photo7.jpg", 
+        message: "PLACEHOLDER_MESSAGE_7" 
     }
 ];
 
@@ -108,7 +108,7 @@ function showPolaroid(index) {
     polaroid.style.animationDelay = `${index * 0.1}s`;
     
     polaroid.innerHTML = `
-        <img src="${polaroidData.image}" alt="Our memory ${index + 1}" onerror="this.src='https://via.placeholder.com/200x180/B8D4E3/4A4A4A?text=Photo+${index + 1}'">
+        <img src="${polaroidData.image}" alt="Our memory ${index + 1}" onerror="this.src='https://via.placeholder.com/200x180/B8D4E3/4A4A4A?text=photo${index + 1}'">
         <p class="polaroid-caption">${polaroidData.message}</p>
     `;
     
