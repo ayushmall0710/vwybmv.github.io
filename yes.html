@@ -23,14 +23,38 @@
             <h1 class="title">I knew you'd say yes, Vrushti! 💖</h1>
             <p class="subtitle">You've made me the happiest!</p>
             
-            <!-- Placeholder for couple's GIF -->
-            <div class="gif-frame">
-                <div class="frame-tape"></div>
-                <!-- Replace the src with your couple's GIF -->
-                <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmo3c3l5ODh3ZGN6NHhhaDE2Mjg1ZjkwOXczdDFxbWM3dTBtaW9zaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/9XY4f3FgFTT4QlaYqa/giphy.gif" 
-                     alt="Us celebrating!" 
-                     class="celebration-gif"
-                     onerror="this.src='https://via.placeholder.com/300x250/E8B4B8/FFFFFF?text=Our+GIF+Here'">
+            <!-- Three polaroid frames: F1, Video, F2 -->
+            <div class="polaroid-trio">
+                <!-- F1 - Left Image -->
+                <div class="gif-frame side-frame">
+                    <div class="frame-tape"></div>
+                    <img src="photos/F1 - Basking in the glory of good decisions, there's a long way to go!.jpg" 
+                         alt="Basking in the glory of good decisions" 
+                         class="side-image">
+                    <p class="frame-caption">Basking in the glory of good decisions, there's a long way to go!</p>
+                </div>
+                
+                <!-- F0 - Center Video -->
+                <div class="gif-frame main-frame">
+                    <div class="frame-tape"></div>
+                    <video src="photos/F0.mp4" 
+                           class="celebration-video" 
+                           controls 
+                           autoplay 
+                           loop
+                           playsinline>
+                        Your browser doesn't support video.
+                    </video>
+                </div>
+                
+                <!-- F2 - Right Image -->
+                <div class="gif-frame side-frame">
+                    <div class="frame-tape"></div>
+                    <img src="photos/F2 - You said yes!!! Have maari!.jpg" 
+                         alt="You said yes!" 
+                         class="side-image">
+                    <p class="frame-caption">You said yes!!! Have maari!</p>
+                </div>
             </div>
             
             <p class="love-message">
@@ -41,7 +65,48 @@
         </div>
     </div>
 
+    <!-- Background Music -->
+    <audio id="bgMusic" loop>
+        <source src="photos/Background Music.mp3" type="audio/mpeg">
+    </audio>
+
     <script>
+        // ===== Handle Video and Music =====
+        const video = document.querySelector('.celebration-video');
+        const bgMusic = document.getElementById('bgMusic');
+        
+        // Set music to start at 45 seconds
+        bgMusic.currentTime = 45;
+        bgMusic.volume = 0.3; // Lower volume so it doesn't compete with video
+        
+        // Mute background music while video is playing
+        if (video) {
+            video.addEventListener('play', () => {
+                bgMusic.pause();
+            });
+            
+            video.addEventListener('pause', () => {
+                bgMusic.play();
+            });
+            
+            video.addEventListener('ended', () => {
+                bgMusic.play();
+            });
+        }
+        
+        // Start music on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            // If video is not autoplaying, start music
+            if (video.paused) {
+                bgMusic.play().catch(() => {
+                    // If autoplay is blocked, play on first user interaction
+                    document.body.addEventListener('click', () => {
+                        bgMusic.play();
+                    }, { once: true });
+                });
+            }
+        });
+
         // Create floating hearts
         function createHeart() {
             const container = document.getElementById('heartsContainer');

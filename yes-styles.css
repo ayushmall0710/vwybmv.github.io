@@ -91,7 +91,7 @@ body {
 .celebration-container {
     position: relative;
     z-index: 2;
-    max-width: 500px;
+    max-width: 1000px;
     width: 100%;
 }
 
@@ -173,28 +173,53 @@ body {
     }
 }
 
+/* ===== Polaroid Trio Container ===== */
+.polaroid-trio {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 25px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
 /* ===== GIF Frame (Polaroid style) ===== */
 .gif-frame {
     background: #FEFEFE;
-    padding: 15px 15px 20px 15px;
-    margin: 20px auto;
+    padding: 15px 15px 50px 15px;
     box-shadow: 
         0 4px 15px rgba(139, 109, 76, 0.2),
         0 2px 4px rgba(0, 0, 0, 0.1);
     position: relative;
     display: inline-block;
-    transform: rotate(-2deg);
     animation: frameAppear 0.8s ease-out 0.7s backwards;
+}
+
+.main-frame {
+    transform: rotate(-1deg);
+    max-width: 350px;
+}
+
+.side-frame {
+    max-width: 220px;
+}
+
+.side-frame:first-child {
+    transform: rotate(-4deg);
+}
+
+.side-frame:last-child {
+    transform: rotate(3deg);
 }
 
 @keyframes frameAppear {
     from {
         opacity: 0;
-        transform: rotate(-2deg) scale(0.8);
+        transform: rotate(var(--rotation, 0deg)) scale(0.8);
     }
     to {
         opacity: 1;
-        transform: rotate(-2deg) scale(1);
+        transform: rotate(var(--rotation, 0deg)) scale(1);
     }
 }
 
@@ -209,12 +234,31 @@ body {
     opacity: 0.85;
 }
 
-.celebration-gif {
-    max-width: 280px;
+.celebration-video {
+    max-width: 320px;
     width: 100%;
     height: auto;
     display: block;
     border-radius: 2px;
+}
+
+.side-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 2px;
+}
+
+.frame-caption {
+    position: absolute;
+    bottom: 8px;
+    left: 10px;
+    right: 10px;
+    font-family: 'Caveat', cursive;
+    font-size: 1rem;
+    color: #4A4A4A;
+    text-align: center;
+    line-height: 1.2;
 }
 
 /* ===== Love Message ===== */
@@ -261,6 +305,23 @@ body {
 }
 
 /* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+    .polaroid-trio {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .main-frame,
+    .side-frame {
+        max-width: 280px;
+        transform: rotate(0deg) !important;
+    }
+    
+    .celebration-video {
+        max-width: 250px;
+    }
+}
+
 @media (max-width: 500px) {
     .title {
         font-size: 2.2rem;
@@ -274,8 +335,13 @@ body {
         padding: 40px 25px;
     }
     
-    .celebration-gif {
+    .main-frame,
+    .side-frame {
         max-width: 220px;
+    }
+    
+    .celebration-video {
+        max-width: 190px;
     }
     
     .love-message {
@@ -285,5 +351,9 @@ body {
     .card-tape {
         width: 90px;
         height: 25px;
+    }
+    
+    .frame-caption {
+        font-size: 0.85rem;
     }
 }
