@@ -23,13 +23,18 @@
     </div>
 
     <div class="scrapbook-container">
-        <!-- Main card -->
+        <!-- Left polaroids column -->
+        <div class="polaroid-gallery-left" id="polaroidGalleryLeft">
+            <!-- Photos 1, 3, 5, 7 -->
+        </div>
+        
+        <!-- Center: Main card -->
         <div class="main-card">
             <div class="card-tape"></div>
             <h1 class="title">Vrushti, will you be my Valentine? 💌</h1>
             
             <div class="gif-container">
-                <img src="photos/I1 - Hello madam, me Aayush.jpg" alt="Hello madam, me Aayush" class="main-gif">
+                <img src="photos/I1.jpg" alt="Hello madam, me Aayush" class="main-gif">
             </div>
 
             <div class="buttons">
@@ -39,11 +44,16 @@
 
             <p class="message" id="message"></p>
         </div>
-
-        <!-- Polaroid gallery - reveals on No clicks -->
-        <div class="polaroid-gallery" id="polaroidGallery">
-            <!-- Polaroids will be dynamically added by JavaScript -->
+        
+        <!-- Right polaroids column -->
+        <div class="polaroid-gallery-right" id="polaroidGalleryRight">
+            <!-- Photos 2, 4, 6, 8 -->
         </div>
+    </div>
+    
+    <!-- Below: Overflow polaroids -->
+    <div class="polaroid-gallery-overflow" id="polaroidGalleryOverflow">
+        <!-- Photos 9-12 in horizontal line -->
     </div>
 
     <!-- Background Music -->

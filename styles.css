@@ -90,12 +90,13 @@ body {
 .scrapbook-container {
     position: relative;
     z-index: 1;
-    max-width: 900px;
+    max-width: 1400px;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
+    display: grid;
+    grid-template-columns: minmax(280px, 500px) minmax(400px, 600px) minmax(280px, 500px);
+    gap: 40px;
+    align-items: start;
+    justify-content: center;
     padding: 20px;
 }
 
@@ -216,19 +217,34 @@ body {
 }
 
 /* ===== Polaroid Gallery ===== */
-.polaroid-gallery {
+.polaroid-gallery-left,
+.polaroid-gallery-right {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-content: start;
+}
+
+.main-card {
+    grid-column: 2;
+    justify-self: center;
+    align-self: center;
+}
+
+.polaroid-gallery-overflow {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
-    max-width: 800px;
+    max-width: 1400px;
     padding: 20px;
+    margin: 0 auto;
 }
 
 /* ===== Individual Polaroid ===== */
 .polaroid {
     background: #FEFEFE;
-    padding: 15px 15px 50px 15px;
+    padding: 15px 15px 70px 15px;
     box-shadow: 
         0 4px 15px rgba(139, 109, 76, 0.2),
         0 2px 4px rgba(0, 0, 0, 0.1);
@@ -267,23 +283,60 @@ body {
 
 .polaroid-caption {
     position: absolute;
-    bottom: 10px;
-    left: 15px;
-    right: 15px;
+    bottom: 8px;
+    left: 10px;
+    right: 10px;
     font-family: 'Caveat', cursive;
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     color: #4A4A4A;
     text-align: center;
+    line-height: 1.2;
+    max-height: 55px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 
 /* ===== Responsive Design ===== */
-@media (max-width: 600px) {
-    .title {
-        font-size: 2rem;
+@media (max-width: 768px) {
+    .scrapbook-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
     
+    /* Polaroids appear FIRST, pushing card down */
+    .polaroid-gallery-left,
+    .polaroid-gallery-right {
+        order: 1;
+        width: 100%;
+        position: static;
+    }
+    
+    /* Main card appears AFTER polaroids */
     .main-card {
+        order: 2;
+        margin-top: 20px;
         padding: 30px 20px;
+        grid-column: auto;
+    }
+    
+    /* Combine left and right into single column */
+    .polaroid-gallery-left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .polaroid-gallery-right {
+        display: none; /* Photos will all go to left column on mobile */
+    }
+    
+    .title {
+        font-size: 2rem;
     }
     
     .btn {
@@ -297,8 +350,8 @@ body {
     }
     
     .polaroid {
-        max-width: 160px;
-        padding: 10px 10px 40px 10px;
+        max-width: 180px;
+        padding: 12px 12px 65px 12px;
     }
     
     .polaroid img {
@@ -306,7 +359,18 @@ body {
     }
     
     .polaroid-caption {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
+        max-height: 48px;
+        line-height: 1.1;
+        -webkit-line-clamp: 3;
+        bottom: 6px;
+        left: 8px;
+        right: 8px;
+    }
+    
+    .polaroid-gallery-overflow {
+        flex-direction: column;
+        align-items: center;
     }
     
     .heart {
